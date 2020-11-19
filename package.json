@@ -1,0 +1,30 @@
+{
+  "name": "block-finder",
+  "version": "0.1.0",
+  "description": "Use globs to find files and regex tokens to find text blocks inside those files",
+  "main": "main.js",
+  "dependencies": {
+    "fast-glob": "^3.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "async",
+    "block",
+    "callback",
+    "find",
+    "finder",
+    "glob",
+    "multiline",
+    "multi-line",
+    "promise",
+    "search",
+    "sync",
+    "text",
+    "token"
+  ],
+  "author": "Toby Miller <toby.miller@tobius.com>",
+  "license": "MIT"
+}
