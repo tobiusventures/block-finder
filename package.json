@@ -1,6 +1,6 @@
 {
   "name": "block-finder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Use globs to find files and regex tokens to find text blocks inside those files",
   "main": "main.js",
   "dependencies": {
