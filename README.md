@@ -29,9 +29,9 @@ bf(options, (err, results) => (!!err) ? console.error(err) : console.log(results
 
 // sync
 try {
-	console.log(bf({ ...options, mode: 'sync' }));
+  console.log(bf({ ...options, mode: 'sync' }));
 } catch (err) {
-	console.error(err);
+  console.error(err);
 }
 ```
 
