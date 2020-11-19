@@ -11,10 +11,14 @@ const options = {
 };
 
 // promise
-bf(options).then(console.log);
+bf(options).then(console.log).catch(console.error);
 
 // callback
-bf(options, console.log);
+// bf(options, (err, results) => (!!err) ? console.error(err) : console.log(results));
 
 // sync
-console.log(bf({ ...options, mode: 'sync' }));
+// try {
+// 	console.log(bf({ ...options, mode: 'sync' }));
+// } catch (err) {
+// 	console.error(err);
+// }
