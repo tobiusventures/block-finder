@@ -25,7 +25,7 @@ class BlockFinder {
     this.stop = props.stop;
 
     // optional
-    this.cwd = path.resolve(props.cwd || '.');
+    this.cwd = path.resolve(props.cwd || process.cwd());
     this.ignore = props.ignore || '**/node_modules';
   }
 
