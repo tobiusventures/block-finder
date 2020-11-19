@@ -4,10 +4,10 @@ const bf = require('../main');
 // configure options
 const options = {
   cwd: '.',
-  glob: '**/*.(js|md)',
+  glob: '**/example*.(js|md)',
   ignore: '**/node_modules',
-  start: '/** START **/',
-  stop: '/** STOP **/',
+  start: /\/\*+ ([A-Z]+)? *START \*+\//,
+  stop: /\/\*+ ([A-Z]+)? *STOP \*+\//,
 };
 
 // promise

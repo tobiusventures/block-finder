@@ -40,6 +40,21 @@ class BlockFinder {
   }
 
   /**
+   * Determine if content includes pattern (text or regexp)
+   *
+   * @param {String} content
+   * @param {String|RegExp} pattern
+   * @return {Boolean}
+   */
+  includes(content, pattern) {
+    if (pattern instanceof RegExp) {
+      return pattern.test(content);
+    } else {
+      return content.includes(pattern);
+    }
+  }
+
+  /**
    * Extract matching text block matches from text content
    *
    * @param {String} content
@@ -50,11 +65,11 @@ class BlockFinder {
     let index = -1;
     let recording = false;
     content.split(/\n/).forEach((line) => {
-      if (line.includes(this.start)) {
+      if (this.includes(line, this.start)) {
         index++;
         recording = true;
         matches[index] = '';
-      } else if (line.includes(this.stop)) {
+      } else if (this.includes(line, this.stop)) {
         recording = false;
       } else if (recording) {
         matches[index] += matches[index] ? `\n${line}` : line || '';
@@ -72,7 +87,7 @@ class BlockFinder {
   async toObjects(absolutes) {
     return Promise.all(absolutes.map(async (absolute) => {
       const content = await fs.promises.readFile(absolute, 'utf8');
-      const matches = content.includes(this.start) && content.includes(this.stop);
+      const matches = this.includes(content, this.start) && this.includes(content, this.stop);
       return {
         content,
         matches: matches ? this.extractMatches(content) : [],
@@ -90,7 +105,7 @@ class BlockFinder {
   toObjectsSync(absolutes) {
     return absolutes.map((absolute) => {
       const content = fs.readFileSync(absolute, 'utf8');
-      const matches = content.includes(this.start) && content.includes(this.stop);
+      const matches = this.includes(content, this.start) && this.includes(content, this.stop);
       return {
         content,
         matches: matches ? this.extractMatches(content) : [],

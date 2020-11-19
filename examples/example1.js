@@ -14,13 +14,13 @@ function foo(text) {
  */
 function bar(text) {
 
-  /** START **/
+  /** JAVASCRIPT START **/
 
   YO YO YO
 
   This is in between the START and STOP blocks that we defined
 
-  /** STOP **/
+  /** JAVASCRIPT STOP **/
 
   console.log(text);
 }
