@@ -1,6 +1,6 @@
 {
   "name": "block-finder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use globs to find files and regex tokens to find text blocks inside those files",
   "main": "main.js",
   "dependencies": {
@@ -26,5 +26,16 @@
     "token"
   ],
   "author": "Toby Miller <toby.miller@tobius.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiusventures/blockfinder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tobiusventures/blockfinder/issues"
+  },
+  "homepage": "https://github.com/tobiusventures/blockfinder#readme"
 }
