@@ -47,7 +47,7 @@ function proxy(options, cb = null) {
   if (cb === null) {
     return promise(bf);
   }
-  callback(bf, cb);
+  return callback(bf, cb);
 }
 
 module.exports = proxy;

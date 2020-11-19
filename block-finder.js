@@ -6,6 +6,20 @@ const path = require('path');
 const fg = require('fast-glob');
 
 /**
+ * Determine if content includes pattern (text or regexp)
+ *
+ * @param {String} content
+ * @param {String|RegExp} pattern
+ * @return {Boolean}
+ */
+function includes(content, pattern) {
+  if (pattern instanceof RegExp) {
+    return pattern.test(content);
+  }
+  return content.includes(pattern);
+}
+
+/**
  * Use globs to find files and regex tokens to find text block matches inside those files
  *
  * @class BlockFinder
@@ -40,21 +54,6 @@ class BlockFinder {
   }
 
   /**
-   * Determine if content includes pattern (text or regexp)
-   *
-   * @param {String} content
-   * @param {String|RegExp} pattern
-   * @return {Boolean}
-   */
-  includes(content, pattern) {
-    if (pattern instanceof RegExp) {
-      return pattern.test(content);
-    } else {
-      return content.includes(pattern);
-    }
-  }
-
-  /**
    * Extract matching text block matches from text content
    *
    * @param {String} content
@@ -65,11 +64,11 @@ class BlockFinder {
     let index = -1;
     let recording = false;
     content.split(/\n/).forEach((line) => {
-      if (this.includes(line, this.start)) {
-        index++;
+      if (includes(line, this.start)) {
+        index += 1;
         recording = true;
         matches[index] = '';
-      } else if (this.includes(line, this.stop)) {
+      } else if (includes(line, this.stop)) {
         recording = false;
       } else if (recording) {
         matches[index] += matches[index] ? `\n${line}` : line || '';
@@ -87,7 +86,7 @@ class BlockFinder {
   async toObjects(absolutes) {
     return Promise.all(absolutes.map(async (absolute) => {
       const content = await fs.promises.readFile(absolute, 'utf8');
-      const matches = this.includes(content, this.start) && this.includes(content, this.stop);
+      const matches = includes(content, this.start) && includes(content, this.stop);
       return {
         content,
         matches: matches ? this.extractMatches(content) : [],
@@ -105,7 +104,7 @@ class BlockFinder {
   toObjectsSync(absolutes) {
     return absolutes.map((absolute) => {
       const content = fs.readFileSync(absolute, 'utf8');
-      const matches = this.includes(content, this.start) && this.includes(content, this.stop);
+      const matches = includes(content, this.start) && includes(content, this.stop);
       return {
         content,
         matches: matches ? this.extractMatches(content) : [],

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 // modules
 const bf = require('../main');
 
@@ -6,8 +8,8 @@ const options = {
   cwd: '.',
   glob: '**/example*.(js|md)',
   ignore: '**/node_modules',
-  start: /\/\*+ ([A-Z]+)? *START \*+\//,
-  stop: /\/\*+ ([A-Z]+)? *STOP \*+\//,
+  start: /\/\*{2,}/,
+  stop: /\*\//,
 };
 
 // promise
@@ -18,7 +20,7 @@ bf(options).then(console.log).catch(console.error);
 
 // sync
 // try {
-// 	console.log(bf({ ...options, mode: 'sync' }));
+//   console.log(bf({ ...options, mode: 'sync' }));
 // } catch (err) {
-// 	console.error(err);
+//   console.error(err);
 // }
