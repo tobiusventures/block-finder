@@ -37,14 +37,14 @@ try {
 
 ### Options
 
-key			| type					| default						| description
----			| ---						| ---								| ---
-cwd			| String				| .									| Current working directory to start searches from
-glob		| String\|Array	| none							| Glob patterns to be used for file searches
-ignore	| String\|Array	| **/node_modules		| Glob patterns to ignore in file searches
+key			| type						| default						| description
+---			| ---							| ---								| ---
+cwd			| String					| `process.cwd()`		| Current working directory to start searches from
+glob		| String\|Array		| none							| Glob patterns to be used for file searches
+ignore	| String\|Array		| `**/node_modules`	| Glob patterns to ignore in file searches
+mode		| String					| `async`						| Whether to run in __sync__ or __async__ mode _(default=async)_
 start		| String\|RegExp	| none							| Starting text block search string pattern
 stop		| String\|RegExp	| none							| Stopping text block search string pattern
-mode		| String				| async							| Whether to run __async__hronously or __sync__hronously
 
 ### License
 
