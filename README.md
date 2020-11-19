@@ -40,10 +40,10 @@ try {
 key			| type					| default						| description
 ---			| ---						| ---								| ---
 cwd			| String				| .									| Current working directory to start searches from
-glob		| String|Array	| none							| Glob patterns to be used for file searches
-ignore	| String|Array	| **/node_modules		| Glob patterns to ignore in file searches
-start		| String|RegExp	| none							| Starting text block search string pattern
-stop		| String|RegExp	| none							| Stopping text block search string pattern
+glob		| String\|Array	| none							| Glob patterns to be used for file searches
+ignore	| String\|Array	| **/node_modules		| Glob patterns to ignore in file searches
+start		| String\|RegExp	| none							| Starting text block search string pattern
+stop		| String\|RegExp	| none							| Stopping text block search string pattern
 mode		| String				| async							| Whether to run __async__hronously or __sync__hronously
 
 ### License
